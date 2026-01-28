@@ -98,7 +98,7 @@ git clone https://github.com/gayatri012shelar/rental-management-system-web_devel
 
 ### 2. Install dependencies
 ```bash
-npm instal
+npm install
 ```
 
 ### 3. Run the development server
