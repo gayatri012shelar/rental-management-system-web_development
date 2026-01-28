@@ -53,7 +53,6 @@ rental-management-system-web_development/
 ├── src/
 │   ├── components/
 │   │   ├── BookingCard.jsx
-│   │   ├── Footer.jsx
 │   │   ├── Header.jsx
 │   │   ├── PhotoGalleryModal.jsx
 │   │   ├── PropertyCard.jsx
