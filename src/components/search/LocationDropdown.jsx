@@ -1,49 +1,93 @@
-/* src/components/search/LocationDropdown.jsx */
-import { FaSearch, FaMapMarkerAlt, FaChevronUp, FaTimes } from "react-icons/fa";
+/* src/components/BookingCard.jsx */
+import { useState } from "react";
 
-export default function LocationDropdown({ onSelect }) {
-  const locations = [
-    "Mahabaleshwar",
-    "Lonavala",
-    "Wada, Palghar",
-    "Dahanu, Palghar",
-    "Jaipur, Rajasthan",
-  ];
+export default function BookingCard({ price }) {
+  const [adults, setAdults] = useState(12);
+  const [children, setChildren] = useState(2);
+  const [pets, setPets] = useState(false);
 
   return (
-    <div className="absolute top-full mt-4 left-0 w-[340px] bg-white rounded-2xl shadow-2xl z-50">
+    <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24 space-y-5">
 
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b">
-        <span className="text-sm font-medium text-gray-900">Location</span>
-        <FaChevronUp className="text-gray-400 text-sm" />
+      {/* PACKAGE */}
+      <div className="text-sm">
+        <p className="text-gray-500">Package</p>
+        <p className="font-medium">All meals included</p>
       </div>
 
-      {/* Search input */}
-      <div className="px-4 py-3">
-        <div className="flex items-center gap-2 border rounded-xl px-3 py-2">
-          <FaSearch className="text-gray-400 text-sm" />
-          <input
-            type="text"
-            placeholder="Select Location"
-            className="flex-1 text-sm outline-none placeholder-gray-400"
-          />
-          <FaTimes className="text-gray-400 text-sm cursor-pointer" />
+      {/* DATES */}
+      <div className="grid grid-cols-2 gap-4 text-sm">
+        <div>
+          <p className="text-gray-500">Check-in</p>
+          <p className="font-medium">17 Jun 2025</p>
+        </div>
+        <div>
+          <p className="text-gray-500">Check-out</p>
+          <p className="font-medium">19 Jun 2025</p>
         </div>
       </div>
 
-      {/* Location list */}
-      <div className="px-2 pb-3 space-y-1">
-        {locations.map((loc) => (
-          <button
-            key={loc}
-            onClick={() => onSelect(loc)}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 text-left"
-          >
-            <FaMapMarkerAlt className="text-gray-500 text-sm" />
-            <span className="text-sm text-gray-900">{loc}</span>
-          </button>
-        ))}
+      {/* ADULTS */}
+      <div className="flex justify-between items-center">
+        <div>
+          <p className="font-medium">Adults</p>
+          <p className="text-xs text-gray-500">Age 12 and above</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button onClick={() => setAdults(Math.max(1, adults - 1))}>−</button>
+          <span>{adults}</span>
+          <button onClick={() => setAdults(adults + 1)}>+</button>
+        </div>
+      </div>
+
+      {/* CHILDREN */}
+      <div className="flex justify-between items-center">
+        <div>
+          <p className="font-medium">Children</p>
+          <p className="text-xs text-gray-500">Ages 5–12</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button onClick={() => setChildren(Math.max(0, children - 1))}>−</button>
+          <span>{children}</span>
+          <button onClick={() => setChildren(children + 1)}>+</button>
+        </div>
+      </div>
+
+      {/* PETS */}
+      <div className="flex justify-between items-center">
+        <p className="font-medium">Travelling with pets</p>
+        <button
+          onClick={() => setPets(!pets)}
+          className={`w-11 h-6 rounded-full ${
+            pets ? "bg-black" : "bg-gray-300"
+          }`}
+        >
+          <span
+            className={`block w-5 h-5 bg-white rounded-full transform transition ${
+              pets ? "translate-x-5" : "translate-x-0"
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* TOTAL */}
+      <div>
+        <p className="text-sm text-gray-500">Total (3 nights)</p>
+        <p className="text-2xl font-bold">{price}</p>
+      </div>
+
+      {/* CTA */}
+      <button className="w-full bg-black text-white py-3 rounded-xl">
+        Reserve Now
+      </button>
+
+      <div className="flex gap-3">
+        <button className="flex-1 bg-blue-500 text-white py-2 rounded-xl">
+          Call
+        </button>
+        <button className="flex-1 bg-green-500 text-white py-2 rounded-xl">
+          WhatsApp
+        </button>
       </div>
     </div>
   );

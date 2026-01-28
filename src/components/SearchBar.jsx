@@ -7,7 +7,7 @@ import DateDropdown from "./search/DateDropdown";
 import GuestsDropdown from "./search/GuestsDropdown";
 import FiltersModal from "./search/FiltersModal";
 
-export default function SearchBar() {
+export default function SearchBar( {onSearch} ) {
   const [open, setOpen] = useState(null);
 
   const [location, setLocation] = useState("Search destinations");
@@ -122,7 +122,17 @@ export default function SearchBar() {
         </div>
 
         {/* SEARCH */}
-        <button className="ml-2 h-12 w-12 rounded-full bg-black text-white flex items-center justify-center">
+        <button
+          onClick={() =>
+            onSearch({
+              location,
+              guests,
+              checkIn,
+              checkOut,
+            })
+          }
+          className="ml-2 h-12 w-12 rounded-full bg-black text-white flex items-center justify-center"
+        >
           <FaSearch />
         </button>
 

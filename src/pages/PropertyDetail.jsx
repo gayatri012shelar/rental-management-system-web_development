@@ -329,9 +329,11 @@ export default function PropertyDetail({ property, onBack }) {
             <h2 className="text-lg font-semibold">About Host</h2>
 
             <div className="flex items-start gap-4">
-              <div className="h-16 w-16 rounded-full bg-gray-200 flex items-center justify-center text-xl font-bold">
-                S
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1553835973-dec43bfddbeb?auto=format&fit=max&w=480"
+                alt="Host"
+                className="h-16 w-16 rounded-full object-cover"
+              />
 
               <div className="space-y-1">
                 <h3 className="font-semibold flex items-center gap-2">
@@ -369,7 +371,6 @@ export default function PropertyDetail({ property, onBack }) {
               <p className="text-xs mt-2">© 2024 doorloom. All rights reserved</p>
             </div>
           </div>
-
 
         </div>
 
